@@ -1,0 +1,16 @@
+.categories{
+    width: 100%;
+    padding: 2rem;
+}
+
+.categories_list{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.categories_img {
+    border-radius: 0.5rem;
+}
