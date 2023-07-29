@@ -23,7 +23,7 @@ const VideoCategory = () => {
               <p className='videoCategory__para'>{video?.title}</p>
               <p className='videoCategory__para'> <strong>views </strong> : {video?.views} | <strong>{video?.creator}</strong></p>
             </Link>
-            {watchLater?.includes(video) ? 
+            {watchLater?.find(({_id}) => _id === video?._id) ? 
             <button onClick={() => removeVideoFromWatchLater(video?._id)} className='videoCategory__watchlaterBtn'><MdWatchLater /></button> :
             <button onClick={() => addVideoToWatchLater(video?._id)} className='videoCategory__watchlaterBtn'><MdOutlineWatchLater /></button>}
               
