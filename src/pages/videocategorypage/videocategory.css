@@ -1,0 +1,40 @@
+.videoCategory{
+    width: 100%;
+    padding: 2rem;
+}
+.videoCategory__image{
+    width: 300px;
+    border-radius: 0.5rem;
+}
+
+.videoCategory__lists{
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.videoCategory__para{
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.videoCategory__list{
+    position: relative;
+    width: 100%;
+}
+
+.videoCategory__watchlaterBtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(255, 241, 164);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0 0 0.7rem 0;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -6,6 +6,7 @@ import Explore from "./pages/explorepage/Explore";
 import Home from './pages/homepage/Home';
 import Playlist from "./pages/playlistpage/Playlist";
 import VideoCategory from "./pages/videocategorypage/VideoCategory";
+import VideoDetails from "./pages/videodetails/VideoDetails";
 import WatchLater from "./pages/watchlaterpage/WatchLater";
 
 
@@ -20,7 +21,9 @@ function App() {
           <Route path="/explore" element={<Explore />}/>
           <Route path="/watchlater" element={<WatchLater />}/>
           <Route path="/playlist" element={<Playlist />}/>
-          <Route path="/categories/:category" element={<VideoCategory />}/>
+          <Route path="/categories/:category" element={<VideoCategory />} />
+          <Route path="/categories/:category/:title" element={<VideoDetails />}/>
+          
         </Route>
       </Routes>
     </div>

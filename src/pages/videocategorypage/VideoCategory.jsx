@@ -1,5 +1,8 @@
-import { Link, useParams } from 'react-router-dom';
+import { MdOutlineWatchLater } from "react-icons/md";
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { useVideoData } from '../../context/VideoContext';
+import "./videocategory.css";
+
 
 const VideoCategory = () => {
     const {category} = useParams();
@@ -15,11 +18,13 @@ const VideoCategory = () => {
   return (
     <div className='videoCategory'>
       <h2>{category}</h2>
-      <ul>
-        {videoLists?.map(({_id,  thumbnail, title}) => (
-          <Link key={_id}>
-            <img src={thumbnail} alt={title} />
-            <p>{title}</p>
+      <ul className='videoCategory__lists'>
+        {videoLists?.map(({_id,  thumbnail, title, creator, views}) => (
+          <Link to={`/categories/${category}/${title}`} className='videoCategory__list' key={_id}>
+            <img className='videoCategory__image' src={thumbnail} alt={title} />
+            <p className='videoCategory__para'>{title}</p>
+            <p className='videoCategory__para'> <strong>views </strong> : {views} | <strong>{creator}</strong></p>
+            <button className='videoCategory__watchlaterBtn'><MdOutlineWatchLater /></button>
           </Link>
         ))}
       </ul>
@@ -28,29 +33,3 @@ const VideoCategory = () => {
 }
 
 export default VideoCategory;
-
-
-// category
-// : 
-// "Origami"
-// chips
-// : 
-// (4) ['origami', 'swan', 'paper', 'elegant']
-// creator
-// : 
-// "PaperCraftPro"
-// src
-// : 
-// "https://www.youtube.com/embed/GBIIQ0kP15E"
-// thumbnail
-// : 
-// "https://picsum.photos/300/174"
-// title
-// : 
-// "Origami Swan - Simple and Elegant"
-// views
-// : 
-// 2879
-// _id
-// : 
-// 19
