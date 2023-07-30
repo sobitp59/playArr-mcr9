@@ -1,7 +1,8 @@
 export const initialState = {
     videos : [],
     watchLater : JSON.parse(localStorage.getItem("watchLaterVideos")) || [],
-    searchQuery : ""
+    searchQuery : "",
+    playlists : JSON.parse(localStorage.getItem('playlistVideos')) || {playlist1: [], playlist2 :[]}
 }
 
 export const videoReducerFunc = (state, {type, payload}) => {
@@ -21,6 +22,11 @@ export const videoReducerFunc = (state, {type, payload}) => {
 
         case "SEARCH_QUERY": {
             return {...state, searchQuery : payload }
+        }
+        
+        case "ADD_TO_PLAYLIST": {
+            localStorage.setItem('playlistVideos', JSON.stringify({...state?.playlists, ...payload}))
+            return {...state, playlists : { ...state?.playlists, ...payload} }
         }
 
         default:

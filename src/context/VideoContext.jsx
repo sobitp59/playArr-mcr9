@@ -33,6 +33,24 @@ export const VideoContextProvider = ({children}) => {
         })
     }
 
+
+    const addToPlaylist = (playListName, setShowModal, video) => {
+        if(Object.keys(state?.playlists)?.find((playlist) => playlist === playListName)){
+            const isVideoInPlayList = state?.playlists[playListName]?.find(({_id}) => _id === video?._id)
+            
+            dispatch({
+                type : "ADD_TO_PLAYLIST",
+                payload : {[playListName] : isVideoInPlayList ? state?.playlists[playListName] : [...state?.playlists[playListName], video] }
+            })
+        }else{
+            dispatch({
+                type : "ADD_TO_PLAYLIST",
+                payload : {[playListName] :[video]}
+            })
+        }        
+        setShowModal(false)
+    }
+
     useEffect(() => {
         dispatch({
             type : "GET_VIDEOS",
@@ -46,9 +64,11 @@ export const VideoContextProvider = ({children}) => {
         videos : state.videos,
         watchLater : state.watchLater,
         searchQuery : state.searchQuery,
+        playlists : state.playlists,
         addVideoToWatchLater,
         removeVideoFromWatchLater,
-        getSearchQuery
+        getSearchQuery,
+        addToPlaylist
     }
 
 
@@ -61,4 +81,4 @@ export const VideoContextProvider = ({children}) => {
     )
 }
 
-export const useVideoData = () => useContext(VideoContext);
+export const useVideoData = () => useContext(VideoContext)

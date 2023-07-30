@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 4fr 1.5fr;
     gap: 2rem;
+    position: relative;
 }
 
 .videodetails__suggested{
@@ -32,4 +33,25 @@
 
 .videodetails__suggVideo{
     margin: 2rem 0;
+}
+
+.videoDeatails_btns{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.videoDeatails_btns > button{
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    outline: none;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    background: white;
+    cursor: pointer;
+}
+
+.videoDeatails_btns > button:hover{
+    background: rgba(211, 211, 211, 0.301);
 }

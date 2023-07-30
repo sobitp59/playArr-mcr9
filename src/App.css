@@ -12,8 +12,10 @@ body{
 }
 
 .app{
-  width: 100%;
+  width: 100vw;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 20vw 80vw;
 }
+
+input, textarea, button {font-family: inherit}
