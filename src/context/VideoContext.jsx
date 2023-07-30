@@ -19,6 +19,7 @@ export const VideoContextProvider = ({children}) => {
     
     const removeVideoFromWatchLater = (videoID) => {
         const videos = state?.watchLater?.filter(({_id}) => _id !== videoID);
+        localStorage.setItem("watchLaterVideos", JSON.stringify(videos))
         dispatch({
             type : "REMOVE_WATCH_LATER",
             payload : videos
