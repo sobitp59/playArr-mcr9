@@ -23,16 +23,3 @@ const Category = () => {
 }
 
 export default Category;
-
-// category
-// : 
-// "Origami"
-// src
-// : 
-// "https://www.youtube.com/embed/D6QM3Xed2J0"
-// thumbnail
-// : 
-// "https://i.ytimg.com/vi/D6QM3Xed2J0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAf7CiFYfUks7dtieegGd3O_eK1hg"
-// _id
-// : 
-// "as122a1_8"

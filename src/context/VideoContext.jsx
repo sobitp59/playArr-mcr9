@@ -26,6 +26,13 @@ export const VideoContextProvider = ({children}) => {
         })
     }
 
+    const getSearchQuery = (e) => {
+        dispatch({
+            type : "SEARCH_QUERY",
+            payload : e?.target?.value
+        })
+    }
+
     useEffect(() => {
         dispatch({
             type : "GET_VIDEOS",
@@ -38,8 +45,10 @@ export const VideoContextProvider = ({children}) => {
     const value = {
         videos : state.videos,
         watchLater : state.watchLater,
+        searchQuery : state.searchQuery,
         addVideoToWatchLater,
-        removeVideoFromWatchLater
+        removeVideoFromWatchLater,
+        getSearchQuery
     }
 
 

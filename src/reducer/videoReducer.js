@@ -1,6 +1,7 @@
 export const initialState = {
     videos : [],
-    watchLater : JSON.parse(localStorage.getItem("watchLaterVideos")) || []
+    watchLater : JSON.parse(localStorage.getItem("watchLaterVideos")) || [],
+    searchQuery : ""
 }
 
 export const videoReducerFunc = (state, {type, payload}) => {
@@ -18,6 +19,9 @@ export const videoReducerFunc = (state, {type, payload}) => {
             return {...state, watchLater : payload }
         }
 
+        case "SEARCH_QUERY": {
+            return {...state, searchQuery : payload }
+        }
 
         default:
             return state;

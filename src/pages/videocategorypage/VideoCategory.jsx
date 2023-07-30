@@ -15,7 +15,6 @@ const VideoCategory = () => {
     <div className='videoCategory'>
       <h2>{category}</h2>
       <ul className='videoCategory__lists'>
-        <></>
         {videoLists?.map((video) => (
           <div key={video?._id} className="videoCategory__list">
             <Link to={`/categories/${category}/${video?.title}`} >

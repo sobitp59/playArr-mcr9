@@ -4,6 +4,8 @@
 }
 .videoCategory__image{
     width: 300px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 0.5rem;
 }
 
@@ -11,8 +13,10 @@
     margin-top: 2rem;
     width: 100%;
     display: grid;
+    height: 80vh;
+    overflow-y: scroll;
     gap: 1rem;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .videoCategory__para{
