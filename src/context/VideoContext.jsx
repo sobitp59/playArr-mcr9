@@ -93,6 +93,34 @@ export const VideoContextProvider = ({children}) => {
             setNote({title : '', description : ''})
         }
         
+    const editNote = (videoId, noteId, title, description, setNote) => {
+        console.log(noteId, title, description);
+        // if(state?.notes?.[videoId]){
+        //     setNote({title : title, description : description})
+        // }
+        state?.notes?.[`${videoId}`]?.map((note) => {
+            console.log(note?.noteId === noteId)
+            console.log(note?.noteId , noteId)
+            if(note?.noteId === noteId){
+                setNote({title : title, description : description})
+            }
+        })
+        console.log(state?.notes?.[`${videoId}`])
+    }
+
+
+    const deleteNote = (videoId, noteId) => {
+        const data = state?.notes?.[`${videoId}`]?.filter((note) => note?.noteId !== noteId)
+        dispatch({
+            type  : "DELETE_NOTE",
+            payload : {
+                videoID : videoId,
+                data  : data
+            }
+        })
+
+    }
+
     useEffect(() => {
         dispatch({
             type : "GET_VIDEOS",
@@ -114,7 +142,9 @@ export const VideoContextProvider = ({children}) => {
                 addToPlaylist,
                 removePlaylist,
                 removePlaylistVideo,
-                saveNote
+                saveNote,
+                editNote,
+                deleteNote
             }
         
         

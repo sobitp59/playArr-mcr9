@@ -129,4 +129,33 @@
     list-style: none;
     border: 1.5px solid rgba(0, 0, 0, 0.185);
     margin-top: 0.5rem;
+    position: relative;
+}
+
+.videoDetails__noteBtns{
+    width: 4rem;
+    height: 1.8rem;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 0.3rem;
+}
+
+.videoDetails__noteBtns > button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    font-size: 1.2rem;
+}
+
+.videoDetails__noteBtns > button:first-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.185);
 }

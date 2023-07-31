@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { AiTwotoneEdit } from "react-icons/ai";
 import { HiPencil } from "react-icons/hi";
-import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
+import { MdDelete, MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 
+import { useEffect } from "react";
 import PlaylistModal from "../../components/playlistmodal/PlaylistModal";
 import { useVideoData } from "../../context/VideoContext";
 import "./videodetails.css";
@@ -11,7 +13,7 @@ const VideoDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const [note, setNote] = useState({title : '', description : ''})
     const {category, title} = useParams();
-    const {videos, watchLater, addVideoToWatchLater, removeVideoFromWatchLater, saveNote, notes} = useVideoData();
+    const {videos, watchLater, addVideoToWatchLater, removeVideoFromWatchLater, saveNote, notes, editNote, deleteNote} = useVideoData();
 
     const catgeories = videos?.filter((video) => video?.category === category );
     const video = catgeories?.find((catgeory) => catgeory?.title === title);
@@ -28,8 +30,6 @@ const VideoDetails = () => {
         setNote({title : '', description : ''})
     }
 
-    console.log('NOtES : ',  notes)
-    console.log('NOtES DATA: ',  notes[`${video?._id}`])
 
     return (
     <div className="videodetails">
@@ -59,6 +59,11 @@ const VideoDetails = () => {
                                 <li className="videoDetails__noteList" key={noteId}>
                                     <p><strong>{title}</strong></p>
                                     <p>{description}</p>
+
+                                    <section className="videoDetails__noteBtns"> 
+                                        <button onClick={() => deleteNote(video?._id, noteId)}><MdDelete /></button>
+                                        <button onClick={() => editNote(video?._id, noteId, title, description, setNote)}><AiTwotoneEdit /></button>
+                                    </section>
                                 </li>
                             ))}
                         </ul>

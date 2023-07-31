@@ -49,7 +49,11 @@ export const videoReducerFunc = (state, {type, payload}) => {
                 localStorage.setItem("notes", JSON.stringify({...state?.notes, [payload?.id] : [payload?.note]}));
                 return {...state, notes :  {...state?.notes, [payload?.id] : [payload?.note]} }
             }
+        }
 
+        case "DELETE_NOTE" : {
+            localStorage.setItem("notes",JSON.stringify({...state?.notes, [payload?.videoID] : payload?.data}))
+            return {...state, notes : {...state?.notes, [payload?.videoID] : payload?.data}}
         }
 
         default:
