@@ -1,0 +1,8 @@
+.noteModal{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    z-index: 1000;
+}

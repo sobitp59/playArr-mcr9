@@ -79,36 +79,51 @@ export const VideoContextProvider = ({children}) => {
         console.log(update)
     }
 
-    useEffect(() => {
-        dispatch({
-            type : "GET_VIDEOS",
-            payload : videos 
-        })
-    }, [])
 
-
-
-    const value = {
-        videos : state.videos,
-        watchLater : state.watchLater,
-        searchQuery : state.searchQuery,
-        playlists : state.playlists,
-        addVideoToWatchLater,
-        removeVideoFromWatchLater,
-        getSearchQuery,
-        addToPlaylist,
-        removePlaylist,
-        removePlaylistVideo
-    }
-
-
-
-
-    return (
-        <VideoContext.Provider value={value}>
-            {children}
-        </VideoContext.Provider>
-    )
+    const saveNote = (event, videoId, title, description) => {
+        event?.preventDefault()
+            dispatch({
+                type : "ADD_NOTE",
+                payload : {
+                    id : `${videoId}`,
+                    note : {noteId :  `${videoId}${title}`, title : title, description : description } 
+                } 
+            })
+        }
+        
+            useEffect(() => {
+                dispatch({
+                    type : "GET_VIDEOS",
+                    payload : videos 
+                })
+            }, [])
+        
+        
+        
+            const value = {
+                videos : state.videos,
+                watchLater : state.watchLater,
+                searchQuery : state.searchQuery,
+                playlists : state.playlists,
+                notes : state.notes,
+                addVideoToWatchLater,
+                removeVideoFromWatchLater,
+                getSearchQuery,
+                addToPlaylist,
+                removePlaylist,
+                removePlaylistVideo,
+                saveNote
+            }
+        
+        
+        
+        
+            return (
+                <VideoContext.Provider value={value}>
+                    {children}
+                </VideoContext.Provider>
+            )
 }
+
 
 export const useVideoData = () => useContext(VideoContext)
