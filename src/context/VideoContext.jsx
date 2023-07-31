@@ -51,6 +51,11 @@ export const VideoContextProvider = ({children}) => {
         setShowModal(false)
     }
 
+
+    const removePlaylist = (playListName) => {
+        console.log(playListName)
+    }
+
     useEffect(() => {
         dispatch({
             type : "GET_VIDEOS",
@@ -68,7 +73,8 @@ export const VideoContextProvider = ({children}) => {
         addVideoToWatchLater,
         removeVideoFromWatchLater,
         getSearchQuery,
-        addToPlaylist
+        addToPlaylist,
+        removePlaylist
     }
 
 

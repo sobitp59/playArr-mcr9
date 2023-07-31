@@ -1,0 +1,67 @@
+.playlist{
+    width: 100%;
+    padding: 2rem;
+}
+
+.playlist__cards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 1.5rem;
+}
+
+.playlist__card{
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.068);
+    border-radius: 1rem;
+}
+
+.playlist__images{
+    width: 100%;
+    display: flex;
+    overflow: hidden; 
+}
+
+.playlist__image{
+    border-radius: 0.6rem;
+    width: 100%;
+}
+
+.playlist__name{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.playlist__div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.playlist__count{
+    position: absolute;
+    width: 100%;
+    background: rgb(253, 255, 139);
+    height: 2rem;
+    bottom: 1.7rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.playlist__removeBtn{
+    padding: 0.2rem 0.4rem;
+    background: white;
+    border: none;
+    outline: 1.5px solid rgba(0, 0, 0, 0.123);
+    cursor: pointer;
+    border-radius: 0.2rem;
+    display: grid;
+    place-content: center;
+}
