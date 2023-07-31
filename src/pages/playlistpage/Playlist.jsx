@@ -1,4 +1,5 @@
 import { AiFillDelete } from "react-icons/ai";
+import { LiaFileVideoSolid } from "react-icons/lia";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useVideoData } from "../../context/VideoContext";
@@ -16,15 +17,16 @@ const Playlist = () => {
 
       <ul className="playlist__cards">
         {playListData?.map((playlist, index) => {
-          const images = playlists[playlist]?.map(({thumbnail}) => thumbnail);
+          const image = playlists[playlist]?.map(({thumbnail}) => thumbnail)[0];
+          // console.log(images[0]);
         
           return (
             <div  key={index} className="playlist__div">
               <Link className="playlist__card" to={`/playlist/${playlist}`}>
                 <section className="playlist__images">
-                  {images?.map((image , index) => (
-                    <img className="playlist__image" src={image} key={index} />
-                  ))}
+                    {image ? <img className="playlist__image" src={image} /> : <div className="playlist__image playlist__image__default" >
+                      <LiaFileVideoSolid className="image__icon" />
+                    </div> }
                 </section>
               </Link>
                 <section className="playlist__name">

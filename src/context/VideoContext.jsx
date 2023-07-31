@@ -65,6 +65,20 @@ export const VideoContextProvider = ({children}) => {
         })
     }
 
+
+    const  removePlaylistVideo = (playlistName, videoID) => {
+        console.log(playlistName, videoID)
+        const update = state?.playlists[playlistName]?.filter(({_id}) => _id !== videoID);
+        dispatch(({
+            type : "REMOVE_PLAYLIST_VIDEO",
+            payload : {
+                playlistname: playlistName,
+                update : update
+            }
+        }))
+        console.log(update)
+    }
+
     useEffect(() => {
         dispatch({
             type : "GET_VIDEOS",
@@ -83,7 +97,8 @@ export const VideoContextProvider = ({children}) => {
         removeVideoFromWatchLater,
         getSearchQuery,
         addToPlaylist,
-        removePlaylist
+        removePlaylist,
+        removePlaylistVideo
     }
 
 

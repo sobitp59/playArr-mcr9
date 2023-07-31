@@ -1,13 +1,12 @@
-import React from 'react';
+import { MdDelete } from 'react-icons/md';
 import { Link, useParams } from 'react-router-dom';
 import { useVideoData } from '../../context/VideoContext';
 import "./playlistdetail.css";
 
 const PlaylistDetail = () => {
     const {playlistName} = useParams();
-    const {playlists} = useVideoData();
+    const {playlists, removePlaylistVideo} = useVideoData();
     const playListVideos = playlists[playlistName];
-    console.log(playListVideos);
 
   return (
     <div className='playlistDetail'>
@@ -20,6 +19,9 @@ const PlaylistDetail = () => {
               <p className='videoCategory__para'>{video?.title}</p>
               <p className='videoCategory__para'> <strong>views </strong> : {video?.views} | <strong>{video?.creator}</strong></p>
             </Link>
+            <button className='delete__video' onClick={() => removePlaylistVideo(playlistName, video?._id)}>
+              <MdDelete className='delete__icon' />
+            </button>
           </div>
         ))}
       </ul>
