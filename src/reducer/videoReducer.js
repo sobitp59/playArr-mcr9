@@ -28,7 +28,11 @@ export const videoReducerFunc = (state, {type, payload}) => {
             localStorage.setItem('playlistVideos', JSON.stringify({...state?.playlists, ...payload}))
             return {...state, playlists : { ...state?.playlists, ...payload} }
         }
-
+        
+        case "REMOVE_PLAYLIST": {
+            localStorage.setItem('playlistVideos', JSON.stringify(payload))
+            return {...state, playlists : payload}
+        }
         default:
             return state;
     }

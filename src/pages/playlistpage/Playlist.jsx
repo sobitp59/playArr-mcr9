@@ -6,7 +6,6 @@ import "./playlist.css";
 
 const Playlist = () => {
   const {playlists, removePlaylist} = useVideoData();
-  console.log(playlists)
 
   const playListData = Object.keys(playlists);
 
@@ -18,7 +17,6 @@ const Playlist = () => {
       <ul className="playlist__cards">
         {playListData?.map((playlist, index) => {
           const images = playlists[playlist]?.map(({thumbnail}) => thumbnail);
-          console.log(images)  
         
           return (
             <div  key={index} className="playlist__div">

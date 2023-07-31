@@ -53,7 +53,16 @@ export const VideoContextProvider = ({children}) => {
 
 
     const removePlaylist = (playListName) => {
-        console.log(playListName)
+        const filtered = {};
+        for(const playlist in state?.playlists){
+            if(playlist !== playListName){
+                filtered[playlist] = state?.playlists[playlist]
+            }
+        }
+        dispatch({
+            type : "REMOVE_PLAYLIST",
+            payload : filtered
+        })
     }
 
     useEffect(() => {
