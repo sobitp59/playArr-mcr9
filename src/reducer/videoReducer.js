@@ -3,7 +3,7 @@ export const initialState = {
     watchLater : JSON.parse(localStorage.getItem("watchLaterVideos")) || [],
     searchQuery : "",
     playlists : JSON.parse(localStorage.getItem('playlistVideos')) || {},
-    notes : {}
+    notes : JSON.parse(localStorage.getItem('notes')) || {},
 }
 
 export const videoReducerFunc = (state, {type, payload}) => {
@@ -43,8 +43,10 @@ export const videoReducerFunc = (state, {type, payload}) => {
         case "ADD_NOTE" : {
             if(Object?.keys(state?.notes)?.find((id) => id === payload?.id
             )){
+                localStorage.setItem("notes", JSON.stringify({...state?.notes, [payload?.id] : [...state?.notes[payload?.id], payload?.note] }));
                 return {...state, notes : {...state?.notes, [payload?.id] : [...state?.notes[payload?.id], payload?.note] }}
             }else{
+                localStorage.setItem("notes", JSON.stringify({...state?.notes, [payload?.id] : [payload?.note]}));
                 return {...state, notes :  {...state?.notes, [payload?.id] : [payload?.note]} }
             }
 

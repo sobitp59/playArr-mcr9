@@ -2,7 +2,7 @@ import { useState } from "react";
 import { HiPencil } from "react-icons/hi";
 import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-import NoteModal from "../../components/notemodal/NoteModal";
+
 import PlaylistModal from "../../components/playlistmodal/PlaylistModal";
 import { useVideoData } from "../../context/VideoContext";
 import "./videodetails.css";
@@ -23,12 +23,18 @@ const VideoDetails = () => {
         setNote((prev) => ({...prev, [name] : value}))
     }
 
+    const discardNote = (e) => {
+        e.preventDefault()
+        setNote({title : '', description : ''})
+    }
+
     console.log('NOtES : ',  notes)
+    console.log('NOtES DATA: ',  notes[`${video?._id}`])
 
     return (
     <div className="videodetails">
         {showModal && <PlaylistModal setShowModal={setShowModal} video={video}/>}
-        <section>
+        <section className="videoDetails__info">
                  <iframe className="videodetails__player" src={video?.src} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullscreen></iframe>
                  <h2>{video?.title}</h2>
                  <section className="videoDeatails_btns">
@@ -39,22 +45,24 @@ const VideoDetails = () => {
                     <button onClick={() => setShowModal(true)}>add to playlist</button>
                  </section>
 
-                 <section>
+                 <section className="videoDetails__notes">
                     <p><HiPencil/> take notes</p>
-                    <form onSubmit={(event) => saveNote(event, video?._id, note?.title, note?.description)}>
-                        <input name="title" value={note?.title} onChange={onNoteChange} type="text" placeholder="enter title"/>
-                        <textarea name="description" value={note?.description} onChange={onNoteChange} placeholder="enter description"></textarea>
-                        <button type="submit" >save</button>
-                        <button>discard</button>
-                    </form>
-                    <ul>
-                        <li>{note?.title }</li>
-                        <li>{note?.description }</li>
-                        <li>note2</li>
-                        <li>note2</li>
-                        <li>note2</li>
-                        <li>note2</li>
-                    </ul>
+                    <div className="videoDetails__note">
+                        <form className="videoDetails__form" onSubmit={(event) => saveNote(event, video?._id, note?.title, note?.description, setNote)}>
+                            <input name="title" value={note?.title} onChange={onNoteChange} type="text" placeholder="enter title"/>
+                            <textarea name="description" value={note?.description} onChange={onNoteChange} placeholder="enter description"></textarea>
+                            <button type="submit" >save</button>
+                            <button type="button" onClick={discardNote}>discard</button>
+                        </form>
+                        <ul className="videoDetails__noteLists">
+                            {notes?.[`${video?._id}`]?.map(({noteId, title, description}) => (
+                                <li className="videoDetails__noteList" key={noteId}>
+                                    <p><strong>{title}</strong></p>
+                                    <p>{description}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                  </section>
         </section>
         <ul className="videodetails__suggested">

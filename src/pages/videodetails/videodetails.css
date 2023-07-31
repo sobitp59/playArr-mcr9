@@ -1,4 +1,5 @@
 .videodetails{
+    height: 100vh;
     width: 100%;
     padding: 2rem;
     display: grid;
@@ -7,10 +8,24 @@
     position: relative;
 }
 
+.videoDetails__info{
+    height: 100vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.videodetails__suggested::-webkit-scrollbar,
+    .videoDetails__info::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 .videodetails__suggested{
     width: 100%;
     height: 90vh;
     overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 }
 
 .videodetails__suggested > p{
@@ -54,4 +69,64 @@
 
 .videoDeatails_btns > button:hover{
     background: rgba(211, 211, 211, 0.301);
+}
+
+.videoDetails__notes{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    padding: 0.1rem;
+    flex-direction: column;
+}
+
+.videoDetails__form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.videoDetails__form input, textarea{
+    outline: 1.2px solid rgba(0, 0, 0, 0.185);
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+}
+
+/* .videoDeatails_btns */
+.videoDetails__form > button{
+    padding: 0.5rem 1rem;
+    outline: none;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.226);
+    background: white;
+    cursor: pointer;
+    background-color: black;
+    color: white;   
+}
+
+.videoDetails__form > button:hover{
+    outline: 2px solid rgba(0, 0, 0, 0.253);
+}
+
+.videoDetails__note{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.videoDetails__noteLists{
+    border: 1.5px solid rgba(0, 0, 0, 0.185);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.videoDetails__noteList{
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    list-style: none;
+    border: 1.5px solid rgba(0, 0, 0, 0.185);
+    margin-top: 0.5rem;
 }

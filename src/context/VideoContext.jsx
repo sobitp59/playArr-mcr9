@@ -80,7 +80,7 @@ export const VideoContextProvider = ({children}) => {
     }
 
 
-    const saveNote = (event, videoId, title, description) => {
+    const saveNote = (event, videoId, title, description, setNote) => {
         event?.preventDefault()
             dispatch({
                 type : "ADD_NOTE",
@@ -89,15 +89,17 @@ export const VideoContextProvider = ({children}) => {
                     note : {noteId :  `${videoId}${title}`, title : title, description : description } 
                 } 
             })
+
+            setNote({title : '', description : ''})
         }
         
-            useEffect(() => {
-                dispatch({
-                    type : "GET_VIDEOS",
-                    payload : videos 
-                })
-            }, [])
-        
+    useEffect(() => {
+        dispatch({
+            type : "GET_VIDEOS",
+            payload : videos 
+        })
+    }, [])
+
         
         
             const value = {
